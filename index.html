@@ -24,23 +24,16 @@
             color: var(--text-color);
         }
 
-        /* === NEON HEARTS (FIXED) === */
+        /* NEON HEARTS */
         .neon-heart {
             position: fixed;
             z-index: 100;
             font-size: 2.5rem;
             color: var(--neon-pink);
-            /* This creates the Neon Glow Effect */
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px var(--neon-pink),
-                0 0 40px var(--neon-pink),
-                0 0 80px var(--neon-pink);
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
             animation: pulseHeart 1.5s infinite alternate;
-            pointer-events: none; /* Let clicks pass through */
+            pointer-events: none;
         }
-
         .top-right { top: 20px; right: 20px; }
         .bottom-left { bottom: 20px; left: 20px; }
 
@@ -49,19 +42,14 @@
             100% { transform: scale(1.1); opacity: 1; }
         }
 
-        /* === FLOATING BACKGROUND === */
+        /* BACKGROUND ELEMENTS */
         .floating-bg {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
         .floater {
-            position: absolute;
-            opacity: 0.6;
-            font-size: 1.5rem;
+            position: absolute; opacity: 0.6; font-size: 1.5rem;
             animation: floatAnim 6s infinite ease-in-out;
         }
         @keyframes floatAnim {
@@ -70,181 +58,104 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* === SCREENS === */
+        /* SCREENS */
         .screen {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            z-index: 10;
-            padding: 20px;
-            box-sizing: border-box;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; transition: opacity 0.5s ease;
+            z-index: 10; padding: 20px; box-sizing: border-box;
             display: none;
         }
+        .active-screen { display: flex; opacity: 1; }
 
-        .active-screen {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === TYPOGRAPHY & IMAGES === */
-        h1, h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
-        }
-        p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+        h1, h2 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 15px; }
+        p { font-size: 1.1rem; line-height: 1.6; }
         
-        .sticker-img {
-            width: 150px;
-            height: auto;
-            margin: 20px 0;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
-        }
+        .sticker-img { width: 140px; margin: 15px 0; }
+        .final-photo { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 4px solid white; box-shadow: 0 0 15px var(--accent-color); margin-bottom: 15px; }
 
-        .final-photo {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--white);
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
-            margin-bottom: 15px;
-        }
-
-        /* === BUTTONS === */
         .nav-btn {
-            background: var(--white);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.1s;
-            margin-top: 15px;
+            background: var(--white); border: none; padding: 12px 25px;
+            border-radius: 50px; font-size: 1.1rem; color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; margin-top: 15px;
         }
-        .nav-btn:active { transform: scale(0.95); background: #ffeef2; }
 
-        /* === GIFT GRID === */
-        .gift-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            width: 100%;
-            max-width: 320px;
-        }
-        .gift-box {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 15px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(238, 156, 167, 0.2);
-            transition: all 0.5s ease;
-        }
-        .gift-box.unwrapped {
-            background: #fff0f3;
-            transform: rotateY(180deg);
-        }
+        /* GIFT GRID */
+        .gift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 320px; }
+        .gift-box { background: var(--white); border-radius: 12px; padding: 15px; cursor: pointer; transition: 0.5s; }
+        .gift-box.unwrapped { background: #fff0f3; transform: rotateY(180deg); }
         .gift-icon { font-size: 1.8rem; }
-        .gift-text { display: none; font-weight: bold; color: var(--accent-color); font-size: 0.9rem; transform: rotateY(180deg); }
-
+        .gift-text { display: none; font-weight: bold; color: var(--accent-color); transform: rotateY(180deg); }
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3" type="audio/mp3">
-    </audio>
-    <audio id="click-sound">
-        <source src="futuristic-ui-positive-selection-davies-aguirre-2-2-00-00.mp3" type="audio/mp3">
-    </audio>
+    <audio id="bg-music" loop><source src="gentle-piano-lullaby-tomas-herudek-1-00-29.mp3" type="audio/mp3"></audio>
+    <audio id="click-sound"><source src="futuristic-ui-positive-selection-davies-aguirre-2-2-00-00.mp3" type="audio/mp3"></audio>
 
     <div class="neon-heart top-right">❤</div>
     <div class="neon-heart bottom-left">❤</div>
 
     <div class="floating-bg">
-        <div class="floater" style="top: 10%; left: 10%;">🌷</div>
-        <div class="floater" style="top: 20%; right: 15%; animation-delay: 1s;">🍡</div>
-        <div class="floater" style="bottom: 15%; left: 20%; animation-delay: 2s;">🌷</div>
-        <div class="floater" style="bottom: 30%; right: 10%; animation-delay: 3s;">🍡</div>
+        <div class="floater" style="top:10%; left:10%;">🌷</div>
+        <div class="floater" style="top:20%; right:15%;">🍡</div>
+        <div class="floater" style="bottom:15%; left:20%;">🌷</div>
     </div>
 
     <div id="screen-1" class="screen active-screen">
         <h1>A Garden of Words...</h1>
-        <p>There are things I've wanted to say,<br>promises I want to plant in our story.<br>Do you want to see them?</p>
-        <img src="cat_flower.png" alt="Cute Cat" class="sticker-img">
-        
+        <p>I've gathered some promises for us.<br>Ready to see them?</p>
+        <img src="cat_flower.png" class="sticker-img">
         <button class="nav-btn" onclick="startExperience()">Start the Journey ➜</button>
     </div>
 
     <div id="screen-2" class="screen">
-        <h2 style="text-decoration: underline; text-decoration-color: #fff;">List of Promises</h2>
-        <div class="gift-grid">
-            <div class="gift-box" onclick="handleGiftClick(1, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 1</div></div>
-            <div class="gift-box" onclick="handleGiftClick(2, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 2</div></div>
-            <div class="gift-box" onclick="handleGiftClick(3, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 3</div></div>
-            <div class="gift-box" onclick="handleGiftClick(4, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 4</div></div>
-            <div class="gift-box" onclick="handleGiftClick(5, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 5</div></div>
-            <div class="gift-box" onclick="handleGiftClick(6, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 6</div></div>
-            <div class="gift-box" onclick="handleGiftClick(7, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise 7</div></div>
+        <h2 style="text-decoration: underline;">List of Promises</h2>
+        <div class="gift-grid" id="giftGrid">
+            <script>
+                for(let i=1; i<=7; i++) {
+                    document.write(`<div class="gift-box" onclick="handleGiftClick(${i}, this)"><div class="gift-icon">🎁</div><div class="gift-text">Promise ${i}</div></div>`);
+                }
+            </script>
         </div>
     </div>
 
     <div id="screen-3" class="screen">
         <h2 id="promise-title">Promise #</h2>
-        <img src="cat_flower.png" alt="Cat" class="sticker-img" style="width: 100px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616430.png" class="sticker-img" style="width: 80px;">
         <p id="promise-text" style="padding: 0 20px; font-style: italic;"></p>
-        <button class="nav-btn" onclick="playSound(); nextScreen(2)">⬅ Back to List</button>
+        <button id="dynamic-btn" class="nav-btn">⬅ Back to List</button>
     </div>
 
     <div id="screen-4" class="screen" style="background: linear-gradient(to bottom, #fff0f3, #e8cdd4);">
-        <h2 style="color: #d63384;">More Than A Promise</h2>
-        
-        <img src="her_photo.jpg" alt="Us" class="final-photo">
-        
+        <h2>For My Best Friend</h2>
+        <img src="her_photo.jpg" class="final-photo">
         <div style="background: rgba(255,255,255,0.6); padding: 15px; border-radius: 15px; max-width: 90%;">
-            <p style="font-family: 'Dancing Script'; font-size: 1.3rem; line-height: 1.6; margin: 0;">
+            <p style="font-family: 'Dancing Script'; font-size: 1.3rem;">
                 "They say friends are the family we choose,<br>
                 But you’ve become something I can't bear to lose.<br>
-                From our late-night talks to the way you smile,<br>
-                You make every moment worth the while.<br>
                 These promises aren't bluff, they are true,<br>
                 Because my favorite story... is me and you."
             </p>
         </div>
-        <img src="cat_flower.png" alt="Cat" class="sticker-img" style="width: 60px; margin-top: 10px;">
-        <button class="nav-btn" style="font-size: 0.9rem;" onclick="playSound(); nextScreen(1)">Read Again ↺</button>
+        <button class="nav-btn" onclick="playSound(); nextScreen(1)">Read Again ↺</button>
     </div>
 
     <script>
-        // === AUDIO SETUP ===
         const clickSound = document.getElementById("click-sound");
         const bgMusic = document.getElementById("bg-music");
-        bgMusic.volume = 0.3; // Set volume to 30% so it's "soft"
+        bgMusic.volume = 0.3;
 
-        function playSound() {
-            clickSound.currentTime = 0;
-            clickSound.play();
-        }
+        function playSound() { clickSound.currentTime = 0; clickSound.play(); }
 
         function startExperience() {
             playSound();
-            bgMusic.play().catch(error => {
-                console.log("Audio play blocked until interaction");
-            });
+            bgMusic.play().catch(() => {});
             nextScreen(2);
         }
 
-        // === CONTENT ===
         const promises = {
             1: "I promise to always be the ear that listens to your silence, not just your words.",
             2: "I promise to keep sending you memes even when we're 80, because your laughter is my favorite sound.",
@@ -252,40 +163,39 @@
             4: "I promise to never let a bad day win, as long as I have a joke to make you smile.",
             5: "I promise to support your wildest dreams, even if I'm the only one clapping in the crowd.",
             6: "I promise that no matter how much things change, my care for you will always stay constant.",
-            7: "Final"
+            7: "I promise to always be honest with you, especially about how much you truly mean to me..."
         };
 
-        // === NAVIGATION ===
         function nextScreen(id) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
-            document.getElementById('screen-' + id).classList.add('active-screen');
+            document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
+            document.getElementById('screen-' + id).style.display = 'flex';
         }
 
-        // === GIFT LOGIC ===
         function handleGiftClick(number, element) {
-            playSound(); // Play sound on click
-            
+            playSound();
             const icon = element.querySelector('.gift-icon');
             const text = element.querySelector('.gift-text');
 
             if (icon.style.display !== 'none') {
                 element.classList.add('unwrapped');
-                setTimeout(() => {
-                    icon.style.display = 'none';
-                    text.style.display = 'block';
-                }, 200);
+                setTimeout(() => { icon.style.display = 'none'; text.style.display = 'block'; }, 200);
             } else {
-                if (number === 7) {
-                    nextScreen(4);
-                } else {
-                    showPromise(number);
-                }
+                showPromise(number);
             }
         }
 
         function showPromise(number) {
             document.getElementById('promise-title').innerText = "Promise No. " + number;
             document.getElementById('promise-text').innerText = promises[number];
+            
+            const btn = document.getElementById('dynamic-btn');
+            if (number === 7) {
+                btn.innerText = "There's one more thing... ➜";
+                btn.onclick = () => { playSound(); nextScreen(4); };
+            } else {
+                btn.innerText = "⬅ Back to List";
+                btn.onclick = () => { playSound(); nextScreen(2); };
+            }
             nextScreen(3);
         }
     </script>
